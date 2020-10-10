@@ -1,0 +1,19 @@
+//Регистрация
+POST  http://localhost:5000/api/auth/register HTTP/1.1 
+content-type: application/json
+
+{
+    "email": "paveltoon@mail.ru",
+    "password": "Luchiy12"
+}
+
+###
+
+// Логин
+POST http://localhost:5000/api/auth/login HTTP/1.1 
+content-type: application/json
+
+{
+    "email": "paveltoon@mail.ru",
+    "password": "Luchiy12"
+}
