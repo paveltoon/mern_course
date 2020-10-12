@@ -5,17 +5,17 @@ const path = require('path')
 const app = express()
 app.use(express.json({ extended: true }))
 
+app.use('/api/auth', require('./routes/auth.routes'))
+app.use('/api/link', require('./routes/links.routes'))
+app.use('/t', require('./routes/redirect.routes'))
+
 if (process.env.NODE_ENV === "production") {
   app.use('/', express.static(path.join(__dirname, 'client', 'build')))
-
+  console.log(process.env.NODE_ENV)
   app.get('*', (req, res) => {
     return res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
   })
 }
-
-app.use('/api/auth', require('./routes/auth.routes'))
-app.use('/api/link', require('./routes/links.routes'))
-app.use('/t', require('./routes/redirect.routes'))
 
 const PORT = config['port'] || 5000
 
